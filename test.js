@@ -1,6 +1,8 @@
 import test from 'ava';
-import @joegesualdo/strip-keys-with-empty-values from './dist'
+import stripKeysWithEmptyValues from "./dist"
 
 test(t => {
-    t.deepEqual([1, 2], [1, 2]);
+  let originalObj = {name: 'joe', age: ''}
+  let newObj = stripKeysWithEmptyValues(originalObj)
+  t.deepEqual(newObj, {name: 'joe'});
 });

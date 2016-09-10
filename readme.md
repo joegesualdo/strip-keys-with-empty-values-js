@@ -1,51 +1,73 @@
 ## @joegesualdo/strip-keys-with-empty-values [![Build Status](https://travis-ci.org/joegesualdo/strip-keys-with-empty-values-js.svg?branch=master)](https://travis-ci.org/joegesualdo/strip-keys-with-empty-values-js)
-> Strip an objects keys with empty values.
-
-## Highlights
-
-- Highlight 1
-- Highlight 2
-- Highlight 3
+> Strip an object's keys with empty values. Supports nested objects.
 
 ## Install
 ```
-$ npm install --save @joegesualdo/strip-keys-with-empty-values 
+$ npm install --save @joegesualdo/strip-keys-with-empty-values
 ```
 
 ## Usage
 ```javascript
-var @joegesualdo/stripKeysWithEmptyValues = require("@joegesualdo/stripKeysWithEmptyValues").default
+import stripKeysWithEmptyValues from "@joegesualdo/strip-keys-with-empty-values"
 
-// insert code example here
+let obj = {
+  name: 'joe',
+  age: '',
+  job: {
+    title: 'cool',
+    hours: ''
+  }
+}
+
+stripKeysWithEmptyValues(obj, true)
+//=> {
+//     name: 'joe',
+//     job: {
+//       title: 'cool'
+//     }
+//   }
+```
+
+## API
+### `stripKeysWithEmptyValues(obj, nested)`
+> Strips the keys with empty values. Support nested objects.
+
+| Name | Type | Description |
+|------|------|-------------|
+| obj | `Object` | The object you want to strip |
+| nested | `Boolean` | Should the keys of nested objects be stripped?|
+
+Returns: `Object`, that represents the obj provided but with the empty keys stripped.
+
+```javascript
+import stripKeysWithEmptyValues from "@joegesualdo/strip-keys-with-empty-values"
+
+let obj = {
+  name: 'joe',
+  age: '',
+  job: {
+    title: 'cool',
+    hours: ''
+  }
+}
+
+stripKeysWithEmptyValues(obj, true)
+//=> {
+//     name: 'joe',
+//     job: {
+//       title: 'cool'
+//     }
+//   }
 ```
 
 ## Test
 ```
 $ npm test
 ```
-## API
-### `methodName(arg1, arg2)`
-> What does this method do?
-
-| Name | Type | Description |
-|------|------|-------------|
-| arg1 | `Array` | Test description|
-| arg2 | `String` | Test description|
-
-Returns: `Array`, of things
-
-```javascript
-var @joegesualdo/stripKeysWithEmptyValues = require("@joegesualdo/strip-keys-with-empty-values").default
-
-// insert method example here
-```
 ## Build
 ```
 $ npm run build
 ```
-
-## Related
-- [example-package]() - Add description of the example package here.
 
 ## License
 MIT © [Joe Gesualdo]()
